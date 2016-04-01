@@ -22,7 +22,7 @@
     </target>
 
 
-    <target name="unit_test">
+    <target name="unit_tests">
         <junit printsummary="yes" fork="yes" haltonfailure="yes">
             <formatter type="plain"/>
             <test name="my.test.TestCase"/>
