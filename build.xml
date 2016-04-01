@@ -1,0 +1,33 @@
+<project name="OBC" default="compile" basedir=".">
+    <description>
+        Generates Clean Builds for the OBC project
+    </description>
+  
+    <property name="build_output_folder" location="${basedir}/out"/>
+    <property name="src_folder" location="${basedir}/src"/>
+
+    <target name="clean">
+        <echo message="Deleting ${build_output_folder}" />
+        <delete dir="${build_output_folder}"/>
+    </target>
+
+    <target name="init">
+        <echo message="Creating ${build_output_folder}" />
+        <mkdir dir="${build_output_folder}"/>
+    </target>
+
+    <target name="compile" depends="clean, init">
+        <echo message="Compiling ${src_folder}" />
+        <javac srcdir="${src_folder}" destdir="${build_output_folder}" source="1.7" />
+    </target>
+
+
+    <target name="unit_test">
+        <junit printsummary="yes" fork="yes" haltonfailure="yes">
+            <formatter type="plain"/>
+            <test name="my.test.TestCase"/>
+        </junit>
+    </target>
+
+
+</project>
