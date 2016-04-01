@@ -1,9 +1,6 @@
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.lang.reflect.Field;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ChanceTest {
 
