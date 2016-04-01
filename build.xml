@@ -5,6 +5,7 @@
   
     <property name="build_output_folder" location="${basedir}/out"/>
     <property name="src_folder" location="${basedir}/src"/>
+    <property name="test_folder" location="${basedir}/test"/>
 
     <target name="clean">
         <echo message="Deleting ${build_output_folder}" />
@@ -22,10 +23,21 @@
     </target>
 
 
+    <target name="compile_test" depends="compile">
+        <echo message="Compiling ${test_folder}" />
+        <javac srcdir="${test_folder}" destdir="${build_output_folder}" source="1.7" />
+    </target>
+
+
     <target name="unit_tests">
         <junit printsummary="yes" fork="yes" haltonfailure="yes">
             <formatter type="plain"/>
-            <test name="my.test.TestCase"/>
+<!--            <test name="my.test.TestCase"/>  -->
+            <batchtest fork="yes" todir="${report.dir}">
+                <fileset dir="${test.dir}">
+                    <include name="**/*Test*.java" />
+                </fileset>
+            </batchtest>
         </junit>
     </target>
 
